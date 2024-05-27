@@ -5,7 +5,9 @@ module Bootstrap3
         %w(stylesheets javascripts fonts images).each do |sub|
           app.config.assets.paths << root.join('assets', sub)
         end
-        app.config.assets.precompile << %r(bootstrap-3/glyphicons-halflings-regular\.(?:eot|svg|ttf|woff)$)
+        %w(eot svg ttf woff).each do |ext|
+          app.config.assets.precompile << root.join("assets/fonts/bootstrap-3/glyphicons-halflings-regular.#{ext}").to_s
+        end
       end
     end
   end
